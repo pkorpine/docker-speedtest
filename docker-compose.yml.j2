@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  speedtest:
+    build: https://github.com/pkorpine/docker-speedtest.git
+    restart: unless-stopped
+    environment:
+      INFLUXDB_HOST: {{ INFLUXDB_HOST }}
+      INFLUXDB_PORT: {{ INFLUXDB_PORT }}
+      INFLUXDB_DATABASE: {{ INFLUXDB_DATABASE }}
+      SPEEDTEST_SERVER: {{ SPEEDTEST_SERVER }}
+      TEST_INTERVAL: {{ SPEEDTEST_INTERVAL }}
