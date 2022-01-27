@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   speedtest:
-    build: https://github.com/pkorpine/docker-speedtest.git
+    build: https://github.com/pkorpine/docker-speedtest.git#main
     restart: unless-stopped
     environment:
       INFLUXDB_HOST: {{ INFLUXDB_HOST }}
