@@ -44,6 +44,8 @@ if __name__ == "__main__":
         data = run_speedtest()
         logging.info("Push to influxdb")
         push_to_influxdb(data)
-        td = max(0, TEST_INTERVAL - (time.time() - t0))
-        logging.info("Sleeping for %d sec", td)
+        t1 = time.time()
+        td = max(0, t1 - t0) # Protect against clock change during speedtest
+        tsleep = max(0, TEST_INTERVAL - td)
+        logging.info("Sleeping for %d sec", tsleep)
         time.sleep(td)
